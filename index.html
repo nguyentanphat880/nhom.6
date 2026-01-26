@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tiệm Hải sản Ba cô gái</title>
+     <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="wrapper"> 
+    <div id="header"> 
+        <a href="index.html" class="logo"> 
+            <img src="./ảnh/download.jfif" alt="Logo Hải sản" width="150" height="100"> 
+        </a>
+<div id="menu">
+    <div class="item">
+        <a href="index.html">Trang Chủ </a>
+    </div>
+    <div class="item">
+        <a href="#products">Sản phẩm </a>
+    </div>
+  </div>
+
+  <!-- nhập tài khoản -->
+    <div id="actions">
+
+        <div class="item">
+      <a href="login.html">  <img src="./ảnh/icon1.png" alt="" width="25PX" height="25PX"> </a>
+        </div>
+<!-- nhấp để mua đồ  -->
+       
+        <div class="item">
+           
+            <a href="sop.html">  <img src="./ảnh/icon2.png" alt="" width="25PX" height="25PX"> </a>
+        </div>  
+    </div>
+</div>
+<div id="banner">
+    <div class="box-left">
+        <h2>
+            <span>HẢI SẢN</span>
+            <br>
+            <span>HẢI SẢN TƯƠI SỐNG MỖI NGÀY</span>
+        </h2>
+        <p class="haisan" style="color: red;">Đánh bắt trong ngày - tươi ngon - giao nhanh tận nơi<p>
+        <button>Đặt Mua ngay</button>
+    </div>
+    <div class="box-right">
+         <!-- <img src="./ảnh/h9.jpg" alt="">
+        <img src="./ảnh/h10.jpg" alt="">
+        <img src="./ảnh/h11.jpg" alt="">  -->
+    </div>
+    <div class="to-bottom">
+        <a href="#products">
+            <img src="./ảnh/angle-down.png"  alt=""width="50PX" height="50PX">
+        </a>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<!-- Thêm phần tìm kiếm -->
+<div id="search-section" style="max-width: 1200px; margin: 40px auto 20px; padding: 0 20px;">
+    <div style="position: relative; max-width: 600px; margin: 0 auto;">
+        <input type="text" 
+               id="search-input" 
+               placeholder="Tìm kiếm hải sản..." 
+               onkeyup="searchProducts(event)"
+               style="width: 100%; padding: 12px 20px; padding-left: 45px; border: 2px solid #3F7BEE; border-radius: 25px; font-size: 16px;">
+        <i class="fas fa-search" style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #3F7BEE;"></i>
+    </div>
+</div>
+
+<!-- Header kết quả tìm kiếm -->
+<div id="search-results-header" style="display: none; max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+    <h3 id="search-results-count" style="color: #3F7BEE; text-align: center; margin: 20px 0;"></h3>
+</div>
+
+<!-- Phần sản phẩm mới với phân trang -->
+<section id="products" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+    <div style="text-align: center; margin: 40px 0;">
+        <h1 id="category-title" style="color: #3F7BEE; margin-bottom: 10px;">TẤT CẢ HẢI SẢN</h1>
+        <p id="category-description" style="color: #666; margin-bottom: 30px;">Khám phá hải sản tươi ngon, chất lượng cao</p>
+        
+        <!-- Thanh danh mục -->
+       <div class="category-wrapper">
+    <button onclick="setActiveCategory(this); filterProducts('all')" class="category-item active">
+        Tất cả
+    </button>
+
+    <button onclick="setActiveCategory(this); filterProducts('caocap')" class="category-item">
+        Cao cấp
+    </button>
+
+    <button onclick="setActiveCategory(this); filterProducts('donglanh')" class="category-item">
+        Đông lạnh
+    </button>
+
+    <button onclick="setActiveCategory(this); filterProducts('tuoisong')" class="category-item">
+        Tươi sống
+    </button>
+
+    <button onclick="setActiveCategory(this); filterProducts('banchay')" class="category-item">
+        Bán chạy
+    </button>
+
+    <button onclick="setActiveCategory(this); filterProducts('new')" class="category-item">
+        Mới về
+    </button>
+
+    <button onclick="setActiveCategory(this); filterProducts('sale')" class="category-item sale">
+        Khuyến mãi
+    </button>
+</div>
+    
+    <!-- Grid sản phẩm -->
+    <div id="products-grid" class="products-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; margin: 40px 0;">
+        <!-- Sản phẩm sẽ được thêm bằng JavaScript -->
+    </div>
+    
+    <!-- Phân trang -->
+    <div id="pagination" style="display: flex; justify-content: center; align-items: center; gap: 10px; margin: 50px 0;">
+        <!-- Pagination sẽ được thêm bằng JavaScript -->
+    </div>
+</section>
+
+
+
+
+
+<br><br><br><br>
+
+</div>
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<!-- CÁC THÀNH VIÊN TRONG NHÓM -->
+<div id="comment">
+    <h2>CÁC THÀNH VIÊN TRONG NHÓM</h2>
+
+    <div id="comment-body">
+        <div class="member">
+            <img src="./ảnh/tanphat.jpg" alt="Nguyễn Tấn Phát">
+            <h3>Nguyễn Tấn Phát</h3>
+            <p>Thành viên<br>Nhóm 7</p>
+        </div>
+
+        <div class="member">
+            <img src="./ảnh/z7455019618378_7873090391e397f3f97de6acdb451803.jpg" alt="Âu Nguyên Khang">
+            <h3>Âu Nguyên Khang</h3>
+            <p>Trưởng nhóm<br>Nhóm 7</p>
+        </div>
+
+        <div class="member">
+            <img src="./ảnh/nguyenhuuduc.jpg" alt="Nguyễn Hữu Đức">
+            <h3>Nguyễn Hữu Đức</h3>
+            <p>Thành viên<br>Nhóm 7</p>
+        </div>
+    </div>
+</div>
+
+<!-- phần chân -->
+<div id="footer">
+    <div class="box">
+        <div class="logo">
+            <img src="./ảnh/download.jfif" alt=""  width="150" height="100" >
+        </div>
+        <p>Đảm bảo Hải sản tươi sống chất lượng đến với mọi người </p><br>
+        <p>📧 Email:truongtccnbd@gmail.com</p>
+        <p>☎ Hotline: 987-654-321 </p>
+        <p>📍 Địa chỉ: 79 DT 743, KCN Sóng Thần, phường Bình Hoà, Thuận An, Bình Dương</p>
+    </div>
+    <div class="box">
+        <ul class="quick-menu">
+            <div class="item">
+                <a href="index.html">Trang chủ</a>
+            </div>
+            <div class="item">
+               <a href="#products">Sản phẩm</a>
+            </div>
+        </ul>
+    </div>
+     <div class="box">
+        <h3>Liên hệ</h3>
+        <form action="">
+            <input type="text" placeholder="Địa chỉ email">
+            <button>nhận tin</button>
+        </form>
+     </div>
+</div>
+</div> 
+<!-- Modal thông tin thành viên -->
+<div id="member-modal" class="member-modal">
+    <div class="member-modal-content">
+        <div class="member-modal-header">
+            <h2 id="modal-member-name">Âu nguyên khang</h2>
+            <button class="member-modal-close" onclick="closeMemberModal()">&times;</button>
+        </div>
+        <div class="member-modal-body">
+            <div class="member-modal-left">
+                <img id="modal-member-avatar" src="./ảnh/z7455019618378_7873090391e397f3f97de6acdb451803.jpg" alt="Avatar" class="member-modal-avatar">
+                <div class="member-modal-role" id="modal-member-role">Nhóm trưởng</div>
+                <div class="member-modal-team" id="modal-member-team">Nhóm 7</div>
+            </div>
+            <div class="member-modal-right">
+                <h3>Thông tin chi tiết</h3>
+                <div class="member-info-grid" id="modal-member-info">
+                    <!-- Thông tin sẽ được thêm bằng JavaScript -->
+                </div>
+                
+                <div class="member-skills">
+                    <h4>Kỹ năng & Nhiệm vụ</h4>
+                    <div class="skill-tags" id="modal-member-skills">
+                        <!-- Kỹ năng sẽ được thêm bằng JavaScript -->
+                    </div>
+                </div>
+                
+                <div class="member-bio">
+                    <h4>Giới thiệu</h4>
+                    <p id="modal-member-bio">Đang tải thông tin...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Dữ liệu chi tiết thành viên
+    const memberDetails = {
+        'Nguyễn Tấn Phát': {
+            avatar: './ảnh/tanphat.jpg',
+            role: 'Thành viên',
+            team: 'Nhóm 7',
+            info: [
+                { icon: 'fas fa-graduation-cap', label: 'Học vấn', value: 'Sinh viên CNTT' },
+                { icon: 'fas fa-birthday-cake', label: 'Ngày sinh', value: '2/6/2009' },
+                { icon: 'fas fa-map-marker-alt', label: 'Quê quán', value: 'Sóc trăng' },
+                { icon: 'fas fa-envelope', label: 'Email', value: 'tanphat@gmail.com' },
+                { icon: 'fas fa-phone', label: 'SĐT', value: '0987 654 321' },
+                { icon: 'fas fa-heart', label: 'Sở thích', value: 'Lập trình, Đá bóng' }
+            ],
+            skills: ['HTML/CSS', 'JavaScript', 'UI/UX Design', 'Quản lý dự án', 'Giao tiếp'],
+            bio: 'phân tich và tìm hiểu chuyên sâu,trách nhiệm cao, đảm bảo tính ổn định và cân bằng.'
+        },
+        'Âu Nguyên Khang': {
+            avatar: './ảnh/z7455019618378_7873090391e397f3f97de6acdb451803.jpg',
+            role: 'Trường nhóm',
+            team: 'Nhóm 7',
+            info: [
+                { icon: 'fas fa-graduation-cap', label: 'Học vấn', value: 'Sinh viên CNTT' },
+                { icon: 'fas fa-birthday-cake', label: 'Ngày sinh', value: '7/3/2009' },
+                { icon: 'fas fa-map-marker-alt', label: 'Quê quán', value: 'Tiền giang' },
+                { icon: 'fas fa-envelope', label: 'Email', value: 'nguyenkhang@gmail.com' },
+                { icon: 'fas fa-phone', label: 'SĐT', value: '0901 234 567' },
+                { icon: 'fas fa-heart', label: 'Sở thích', value: 'Thiết kế, Âm nhạc' }
+            ],
+            skills: ['JavaScript', 'PHP', 'Database', 'Backend', 'Testing'],
+            bio: 'Chuyên về phát triển backend và xử lý database. Có tư duy logic tốt và luôn tìm cách tối ưu hóa code.'
+        },
+        'Nguyễn Hữu Đức': {
+            avatar: './ảnh/nguyenhuuduc.jpg',
+            role: 'Thành viên',
+            team: 'Nhóm 7',
+            info: [
+                { icon: 'fas fa-graduation-cap', label: 'Học vấn', value: 'Sinh viên CNTT' },
+                { icon: 'fas fa-birthday-cake', label: 'Ngày sinh', value: '10/10/2009' },
+                { icon: 'fas fa-map-marker-alt', label: 'Quê quán', value: 'Thanh hoá' },
+                { icon: 'fas fa-envelope', label: 'Email', value: 'huuduc@gmail.com' },
+                { icon: 'fas fa-phone', label: 'SĐT', value: '0912 345 678' },
+                { icon: 'fas fa-heart', label: 'Sở thích', value: 'Nhiếp ảnh, Du lịch' }
+            ],
+            skills: ['Frontend', 'Responsive Design', 'Git', 'Debugging', 'Teamwork'],
+            bio: 'Chuyên về phát triển frontend, đảm bảo giao diện thân thiện và responsive. Luôn học hỏi công nghệ mới.'
+        }
+    };
+
+    // Hàm mở modal thành viên
+    function openMemberModal(memberName) {
+        const member = memberDetails[memberName];
+        if (!member) return;
+        
+        // Điền thông tin vào modal
+        document.getElementById('modal-member-name').textContent = memberName;
+        document.getElementById('modal-member-avatar').src = member.avatar;
+        document.getElementById('modal-member-role').textContent = member.role;
+        document.getElementById('modal-member-team').textContent = member.team;
+        document.getElementById('modal-member-bio').textContent = member.bio;
+        
+        // Điền thông tin chi tiết
+        const infoGrid = document.getElementById('modal-member-info');
+        infoGrid.innerHTML = '';
+        member.info.forEach(item => {
+            infoGrid.innerHTML += `
+                <div class="member-info-item">
+                    <i class="${item.icon}"></i>
+                    <div>
+                        <strong>${item.label}:</strong>
+                        <div>${item.value}</div>
+                    </div>
+                </div>
+            `;
+        });
+        
+        // Điền kỹ năng
+        const skillsContainer = document.getElementById('modal-member-skills');
+        skillsContainer.innerHTML = '';
+        member.skills.forEach(skill => {
+            skillsContainer.innerHTML += `<span class="skill-tag">${skill}</span>`;
+        });
+        
+        // Hiển thị modal
+        document.getElementById('member-modal').style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+
+    // Hàm đóng modal
+    function closeMemberModal() {
+        document.getElementById('member-modal').style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+
+    // Thêm sự kiện click cho các thành viên khi trang load
+    document.addEventListener('DOMContentLoaded', function() {
+        // Tìm tất cả các thành viên
+        const members = document.querySelectorAll('.member');
+        
+        members.forEach(member => {
+            // Lấy tên thành viên từ thẻ h3
+            const memberName = member.querySelector('h3').textContent;
+            
+            // Thêm sự kiện click
+            member.addEventListener('click', function() {
+                openMemberModal(memberName);
+            });
+            
+            // Thêm hiệu ứng hover
+            member.addEventListener('mouseenter', function() {
+                this.style.cursor = 'pointer';
+            });
+        });
+        
+        // Đóng modal khi click bên ngoài
+        document.getElementById('member-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeMemberModal();
+            }
+        });
+        
+        // Đóng modal bằng phím ESC
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeMemberModal();
+            }
+        });
+    });
+</script>
+<script>
+    // Khởi tạo giỏ hàng nếu chưa có
+    if (!localStorage.getItem('cart')) {
+        localStorage.setItem('cart', JSON.stringify([]));
+    }
+    
+    // Cập nhật số lượng giỏ hàng
+    function updateCartCount() {
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+        
+        // Tạo hoặc cập nhật badge giỏ hàng
+        let cartBadge = document.getElementById('cart-badge');
+        if (!cartBadge) {
+            const cartIcon = document.querySelector('#actions .item img[alt*="cart"]');
+            if (cartIcon && cartIcon.parentNode) {
+                cartBadge = document.createElement('span');
+                cartBadge.id = 'cart-badge';
+                cartBadge.style.cssText = `
+                    position: absolute;
+                    top: -5px;
+                    right: -5px;
+                    background: #e91e63;
+                    color: white;
+                    border-radius: 50%;
+                    width: 20px;
+                    height: 20px;
+                    font-size: 12px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                `;
+                cartIcon.parentNode.style.position = 'relative';
+                cartIcon.parentNode.appendChild(cartBadge);
+            }
+        }
+        
+        if (cartBadge) {
+            cartBadge.textContent = totalItems;
+            cartBadge.style.display = totalItems > 0 ? 'flex' : 'none';
+        }
+    }
+    
+    // Sự kiện click cho nút "Mua ngay" ở banner
+    document.querySelector('#banner button')?.addEventListener('click', function() {
+        // Thêm sản phẩm mẫu vào giỏ hàng
+        const sampleProduct = {
+            id: "sample",
+            name: "Hải sản Tươi Nhập Khẩu",
+            image: "./ảnh/h9.jpg",
+            price: 500000,
+            quantity: 1,
+            category: "Hải sản tươi sống"
+        };
+        
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        cart.push(sampleProduct);
+        localStorage.setItem('cart', JSON.stringify(cart));
+        
+        updateCartCount();
+        alert('Đã thêm Hải sản tươi vào giỏ hàng!');
+    });
+    
+    // Cập nhật số lượng giỏ hàng khi trang load
+    document.addEventListener('DOMContentLoaded', updateCartCount);
+</script>
+
+
+<script src="main.js">
+ 
+   // sự kiện đăng nhập
+      document.querySelector('#actions .item img[alt=""]').addEventListener('click', function(e) { // Giả sử alt rỗng cho icon1
+        e.preventDefault();
+        window.location.href = 'login.html'; // Chuyển đến file mới
+    });
+
+      // Sự kiện cho icon giỏ hàng (chuyển đến trang giỏ hàng)
+    document.querySelector('#actions .item img[alt=""]').addEventListener('click', function(e) { 
+        e.preventDefault();
+        window.location.href = 'sop.html'; // Chuyển đến file mới
+    });
+
+   
+   
+</script> 
+<script>
+function setActiveCategory(button) {
+    const buttons = document.querySelectorAll(".category-item");
+
+    buttons.forEach(btn => {
+        btn.classList.remove("active");
+        btn.classList.remove("bounce");
+    });
+
+    button.classList.add("active");
+
+    // Trigger animation
+    void button.offsetWidth; // reset animation
+    button.classList.add("bounce");
+}
+</script>
+<script src="cart.js"></script>
+<script src="cart-fixed.js"></script>
+<script src="nav-menu.js"></script>
+<script src="search-pagination.js"></script>
+</body>
+</html>

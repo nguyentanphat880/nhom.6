@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Đăng nhập / Đăng ký</title>
+    <link rel="stylesheet" href="auth.css">
+</head>
+<body>
+
+<div class="wrapper">
+    <!-- LOGIN -->
+    <div class="box active" id="loginBox">
+        <h2>Đăng nhập</h2>
+
+        <input type="text" id="loginUser" placeholder="Tên đăng nhập">
+        <input type="password" id="loginPass" placeholder="Mật khẩu">
+
+        <button type="button" onclick="login()">Đăng nhập</button>
+
+        <p>
+            Chưa có tài khoản?
+            <a href="#" onclick="showRegister()">Đăng ký</a>
+        </p>
+    </div>
+
+    <!-- REGISTER -->
+    <div class="box" id="registerBox">
+        <h2>Đăng ký</h2>
+
+        <input type="text" id="registerUser" placeholder="Tên đăng nhập">
+        <input type="password" id="registerPass" placeholder="Mật khẩu">
+        <input type="password" id="registerRePass" placeholder="Nhập lại mật khẩu">
+
+        <button type="button" onclick="register()">Đăng ký</button>
+
+        <p>
+            Đã có tài khoản?
+            <a href="#" onclick="showLogin()">Đăng nhập</a>
+        </p>
+    </div>
+</div>
+
+<script src="auth.js"></script>
+</body>
+</html>

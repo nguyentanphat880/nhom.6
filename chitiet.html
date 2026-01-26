@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết hải sản</title>
+    <link rel="stylesheet" href="chitiet.css">
+</head>
+<body>
+    <button id="backhome">Quay về trang chủ</button>
+
+    <div id="noidung"></div>
+
+    <div id="chochantrang"></div>
+
+    <script>
+    fetch("footer.html")
+    .then(dulieu=>dulieu.text())
+    .then(thongtin=>{
+    document.getElementById("chochantrang").innerHTML=thongtin;
+    })
+    </script>
+
+    <script src="chitiet.js"></script>
+</body>
+</html>

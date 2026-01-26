@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giỏ Hàng - Tiệm Hải sản Ba cô gái</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: #f5f5f3;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #626a67;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0 auto;
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background: #362f2f;
+            color: #fff;
+        }
+
+        td img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+        }
+
+        input[type="number"] {
+            width: 60px;
+            padding: 5px;
+            text-align: center;
+        }
+
+        .total {
+            font-weight: bold;
+            color: #f42424;
+        }
+
+        button {
+            background: #1d1a1a;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background: orchid;
+        }
+
+        .checkout {
+            text-align: center;
+        }
+
+        .back-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: #626a67;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .back-btn:hover {
+            background: #4a4f4a;
+        }
+    </style>
+</head>
+<body>
+    <button class="back-btn" onclick="window.history.back()">Quay Lại</button>
+    <h1>Giỏ Hàng Của Bạn</h1>
+    <table id="cart-table">
+        <thead>
+            <tr>
+                <th>Hình Ảnh</th>
+                <th>Tên Sản Phẩm</th>
+                <th>Giá (VNĐ)</th>
+                <th>Số Lượng</th>
+                <th>Tổng (VNĐ)</th>
+                 <th>xoá</th>
+
+            </tr>
+        </thead>
+        <tbody id="cart-body">
+    <!-- Sản phẩm sẽ được JS thêm vào -->
+</tbody>
+
+        <tfoot>
+            <tr>
+                <td colspan="4" style="text-align: right; font-weight: bold;">Tổng Cộng:</td>
+                <td class="total" id="grand-total">5.330.000</td>
+            </tr>
+        </tfoot>
+    </table>
+    <div class="checkout">
+        <button id="checkout-btn">Thanh Toán</button>
+    </div>
+
+    <script>
+        // JavaScript để tính tổng tiền
+        const quantities = document.querySelectorAll('.quantity');
+        const grandTotals = document.getElementById('grand-total');
+
+        function updateTotals() {
+            let total = 0;
+            quantities.forEach(input => {
+                const row = input.closest('tr');
+                const price = parseInt(row.dataset.price);
+                const qty = parseInt(input.value);
+                const itemTotal = price * qty;
+                row.querySelector('.item-total').textContent = itemTotal.toLocaleString() + ' VNĐ';
+                total += itemTotal;
+            });
+            grandTotals.textContent = total.toLocaleString() + ' VNĐ';
+        }
+
+        // Sự kiện thay đổi số lượng
+        quantities.forEach(input => {
+            input.addEventListener('input', updateTotals);
+        });
+
+        // Sự kiện nút thanh toán
+        document.getElementById('checkout-btn').addEventListener('click', function() {
+            alert('Thanh toán thành công! Tổng: ' + grandTotals.textContent + ' (Demo)');
+        });
+
+        // Tính tổng ban đầu
+        updateTotals();
+    </script>
+    <script>
+const cart = JSON.parse(localStorage.getItem("cart")) || [];
+const cartBody = document.getElementById("cart-body");
+const grandTotal = document.getElementById("grand-total");
+
+function renderCart() {
+    cartBody.innerHTML = "";
+    let total = 0;
+
+    cart.forEach((item, index) => {
+        const itemTotal = item.price * item.quantity;
+        total += itemTotal;
+
+        cartBody.innerHTML += `
+            <tr>
+                <td><img src="${item.image}" width="50"></td>
+                <td>${item.name}</td>
+                <td>${item.price.toLocaleString()} VNĐ</td>
+                <td>
+                    <input type="number" min="1" value="${item.quantity}"
+                        onchange="updateQty(${index}, this.value)">
+                </td>
+                <td>${itemTotal.toLocaleString()} VNĐ</td>
+                <td>
+                    <button onclick="removeItem(${index})">❌</button>
+                </td>
+            </tr>
+        `;
+    });
+
+    grandTotal.textContent = total.toLocaleString() + " VNĐ";
+}
+
+function removeItem(index) {
+    cart.splice(index, 1);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    renderCart();
+}
+
+function updateQty(index, qty) {
+    cart[index].quantity = parseInt(qty);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    renderCart();
+}
+
+renderCart();
+</script>
+
+</body>
+</html>

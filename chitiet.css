@@ -1,0 +1,26 @@
+    body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        #backhome {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+        #backhome:hover {
+            background-color: #45a049;
+        }
+        #noidung {
+            margin-top: 20px;
+        }
+        .image-gallery img {
+            width: 200px;
+            height: 150px;
+            object-fit: cover;
+            margin: 5px;
+            border-radius: 5px;
+        }

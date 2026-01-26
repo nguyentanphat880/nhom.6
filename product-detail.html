@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi Tiết Sản Phẩm - Tiệm Hải sản Ba cô gái</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .product-detail-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        
+        .breadcrumb {
+            background: #f5f5f5;
+            padding: 15px 0;
+            margin-top: 20px;
+        }
+        
+        .breadcrumb-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .breadcrumb-container a {
+            text-decoration: none;
+            color: #666;
+            transition: color 0.3s;
+        }
+        
+        .breadcrumb-container a:hover {
+            color: #e91e63;
+        }
+        
+        .breadcrumb-container .current {
+            color: #e91e63;
+            font-weight: 600;
+        }
+        
+        .product-detail-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-top: 30px;
+        }
+        
+        .product-images {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .main-image {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            height: 400px;
+        }
+        
+        .main-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .discount-badge {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: linear-gradient(135deg, #ff4081, #e91e63);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        .product-info {
+            padding: 20px 0;
+        }
+        
+        .product-title {
+            font-size: 32px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        
+        .product-price {
+            margin: 25px 0;
+        }
+        
+        .original-price {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 20px;
+        }
+        
+        .current-price {
+            font-size: 36px;
+            color: #e91e63;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        
+        .save-price {
+            color: #4caf50;
+            font-weight: 600;
+            background: #e8f5e9;
+            padding: 5px 10px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+        
+        .product-description {
+            color: #666;
+            line-height: 1.6;
+            margin: 25px 0;
+            font-size: 16px;
+        }
+        
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .quantity-btn {
+            width: 40px;
+            height: 40px;
+            border: 1px solid #ddd;
+            background: white;
+            border-radius: 5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+        
+        .quantity-control input {
+            width: 60px;
+            height: 40px;
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 600;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            margin: 30px 0;
+        }
+        
+        .btn-add-to-cart, .btn-buy-now {
+            flex: 1;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s;
+        }
+        
+        .btn-add-to-cart {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+        
+        .btn-buy-now {
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            color: white;
+        }
+        
+        .product-details {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 40px;
+        }
+        
+        @media (max-width: 768px) {
+            .product-detail-content {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="header" style="margin-top: 0; border-radius: 0;">
+        
+    </div>
+
+    <div class="breadcrumb">
+        <div class="breadcrumb-container">
+            <a href="index.html">Trang chủ</a>
+            <span>/</span>
+            <a href="index.html#products">Sản phẩm</a>
+            <span>/</span>
+            <span class="current" id="product-category">Hải sản tươi sống</span>
+            <span>/</span>
+            <span class="current" id="product-name">Chi tiết sản phẩm</span>
+        </div>
+    </div>
+
+    <div class="product-detail-container">
+        <div id="product-detail-content">
+            <!-- Nội dung sẽ được tạo động bằng JavaScript -->
+        </div>
+    </div>
+
+    <footer id="footer">
+        <div class="box">
+            <p>Đảm bảo Hải sản tươi sống được tuyển chọn kĩ lưỡng,đảm bảo tươi ngon, 
+                an toàn vệ sinh thực phẩm và giữ trọn vẹn vị biển tự nhiện</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+        <div class="box">
+            <h3>Liên kết nhanh</h3>
+            <ul class="quick-menu">
+                <li class="item">
+                    <a href="index.html">Trang chủ</a>
+                </li>
+                <li class="item">
+                    <a href="index.html#products">Sản phẩm</a>
+                </li>
+                <li class="item">
+                    <a href="index.html#blog">Blog</a>
+                </li>
+                <li class="item">
+                    <a href="#contact">Liên hệ</a>
+                </li>
+                <li class="item">
+                    <a href="login.html">Đăng nhập</a>
+                </li>
+            </ul>
+        </div>
+        <div class="box">
+            <h3>Thông tin liên hệ</h3>
+            <p><i class="fas fa-map-marker-alt"></i> 79 DT 743, KCN Sóng Thần, phường Bình Hoà, 
+                Thuận An, Bình Dương </p>
+            <p><i class="fas fa-phone"></i> 1900 1080 1270</p>
+            <p><i class="fas fa-envelope"></i> truongtccnbd@gmail.com</p>
+        </div>
+        <div class="box">
+            <h3>Đăng ký nhận tin</h3>
+            <p>Nhận thông tin khuyến mãi mới nhất</p>
+            <form id="newsletter-form">
+                <input type="email" placeholder="Địa chỉ email" required>
+                <button type="submit">Đăng ký</button>
+            </form>
+        </div>
+    </footer>
+
+    <script>
+        // Lấy thông tin sản phẩm từ localStorage
+        const product = JSON.parse(localStorage.getItem('selectedProduct')) || {
+            id: "default",
+            tendv: "Sản phẩm mẫu",
+            anh: "images/default-flower.jpg",
+            tt1: "Mô tả sản phẩm mẫu",
+            gia: "500000",
+            category: "Hải sản tươi sống"
+        };
+        
+        // Hiển thị chi tiết sản phẩm
+        document.addEventListener('DOMContentLoaded', function() {
+            // Cập nhật breadcrumb
+            document.getElementById('product-category').textContent = product.category;
+            document.getElementById('product-name').textContent = product.tendv;
+            
+            // Hiển thị chi tiết sản phẩm
+            document.getElementById('product-detail-content').innerHTML = `
+                <div class="product-detail-content">
+                    <div class="product-images">
+                        <div class="main-image">
+                            <img src="${product.anh}" alt="${product.tendv}" id="mainProductImage" onerror="this.src='images/default-flower.jpg'">
+                            <div class="discount-badge">GIẢM 15%</div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-info">
+                        <h1 class="product-title">${product.tendv}</h1>
+                        
+                        <div class="product-price">
+                            <div class="original-price">${formatPrice(parseInt(product.gia) * 1.15)} VNĐ</div>
+                            <div class="current-price">${formatPrice(product.gia)} VNĐ</div>
+                            <div class="save-price">Tiết kiệm ${formatPrice(parseInt(product.gia) * 0.15)} VNĐ</div>
+                        </div>
+                        
+                        <div class="product-description">
+                            <p>${product.tt1}</p>
+                            <p>Hải sản được tuyển chọn kỹ lưỡng, đảm bảo tươi sống, 
+                            an toàn vệ sinh thực phẩm và giữ trọn vị biển tự nhiên.</p>
+                        </div>
+                        
+                        <div class="quantity-selector">
+                            <label for="quantity">Số lượng:</label>
+                            <div class="quantity-control">
+                                <button class="quantity-btn minus" onclick="updateQuantity(-1)">-</button>
+                                <input type="number" id="quantity" value="1" min="1" max="99">
+                                <button class="quantity-btn plus" onclick="updateQuantity(1)">+</button>
+                            </div>
+                        </div>
+                        
+                        <div class="action-buttons">
+                            <button class="btn-add-to-cart" onclick="addToCartDetail()">
+                                <i class="fas fa-cart-plus"></i> Thêm vào giỏ hàng
+                            </button>
+                            <button class="btn-buy-now" onclick="buyNow()">
+                                <i class="fas fa-bolt"></i> Mua ngay
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-details">
+                    <h3>Mô tả chi tiết</h3>
+                    <p>${product.tt1}</p>
+                    <h3>Hướng dẫn bảo quản</h3>
+                         <ul>
+                             <li>Bảo quản trong ngăn mát hoặc ngăn đông tủ lạnh</li>
+                             <li>Nên chế biến trong vòng 24 giờ để giữ độ tươi ngon</li>
+                             <li>Không rã đông rồi cấp đông lại nhiều lần</li>
+                             <li>Đóng kín bao bì khi bảo quản</li>
+                        </ul>
+                </div>
+            `;
+            
+            // Cập nhật số lượng giỏ hàng
+            updateCartCount();
+            
+            // Xử lý form newsletter
+            document.getElementById('newsletter-form')?.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = this.querySelector('input[type="email"]').value;
+                alert(`Cảm ơn bạn đã đăng ký với email: ${email}`);
+                this.reset();
+            });
+        });
+        
+        function formatPrice(price) {
+            return parseInt(price).toLocaleString('vi-VN');
+        }
+        
+        function updateQuantity(change) {
+            const input = document.getElementById('quantity');
+            let value = parseInt(input.value) + change;
+            
+            if (value < 1) value = 1;
+            if (value > 99) value = 99;
+            
+            input.value = value;
+        }
+        
+        function addToCartDetail() {
+            const quantity = parseInt(document.getElementById('quantity').value);
+            
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const existingItem = cart.find(item => item.id === product.id);
+            
+            if (existingItem) {
+                existingItem.quantity += quantity;
+            } else {
+                cart.push({
+                    id: product.id,
+                    name: product.tendv,
+                    image: product.anh,
+                    price: parseInt(product.gia),
+                    quantity: quantity,
+                    category: product.category
+                });
+            }
+            
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            alert(`Đã thêm ${quantity} ${product.tendv} vào giỏ hàng!`);
+        }
+        
+        function buyNow() {
+            addToCartDetail();
+            setTimeout(() => {
+                window.location.href = 'sop.html';
+            }, 500);
+        }
+        
+        function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const cartCountElement = document.getElementById('cart-count');
+            
+            if (cartCountElement) {
+                cartCountElement.textContent = totalItems;
+            }
+        }
+    </script>
+</body>
+</html>
