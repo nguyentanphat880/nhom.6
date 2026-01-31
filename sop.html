@@ -105,7 +105,8 @@
                 <th>Giá (VNĐ)</th>
                 <th>Số Lượng</th>
                 <th>Tổng (VNĐ)</th>
-                 <th>xoá</th>
+                 <th>xoá</th><th><button onclick="clearAll()" style="background:#626a67; color:white; padding:5px; cursor:pointer;">🗑️ Xóa tất cả</button></th>
+            </tr>
 
             </tr>
         </thead>
@@ -147,10 +148,33 @@
             input.addEventListener('input', updateTotals);
         });
 
-        // Sự kiện nút thanh toán
-        document.getElementById('checkout-btn').addEventListener('click', function() {
-            alert('Thanh toán thành công! Tổng: ' + grandTotals.textContent + ' (Demo)');
-        });
+        // Sự kiện nút thanh toán MỚI (có Reset giỏ hàng)
+document.getElementById('checkout-btn').addEventListener('click', function() {
+    // 1. Kiểm tra xem giỏ hàng có đồ không mới cho thanh toán
+    const currentCart = JSON.parse(localStorage.getItem("cart")) || [];
+    
+    if (currentCart.length === 0) {
+        alert("Giỏ hàng của bạn đang trống!");
+        return;
+    }
+
+    // 2. Thông báo thành công
+    alert('Thanh toán thành công!.');
+
+    // 3. RESET GIỎ HÀNG
+    localStorage.removeItem("cart"); // Xóa sạch dữ liệu trong máy
+    
+    // 4. Cập nhật lại giao diện ngay lập tức
+    // Nếu bạn đang dùng biến 'cart' toàn cục ở trên:
+    if (typeof cart !== 'undefined') {
+        cart.length = 0; // Làm rỗng mảng
+    }
+    
+    renderCart(); // Vẽ lại bảng (lúc này sẽ trống trơn)
+    
+    // 5. (Tùy chọn) Chuyển về trang chủ sau 1 giây
+    // setTimeout(() => { window.location.href = 'index.html'; }, 1000);
+});
 
         // Tính tổng ban đầu
         updateTotals();
@@ -160,6 +184,15 @@ const cart = JSON.parse(localStorage.getItem("cart")) || [];
 const cartBody = document.getElementById("cart-body");
 const grandTotal = document.getElementById("grand-total");
 
+// HÀM MỚI: Xóa tất cả
+function clearAll() {
+    if (confirm("Bạn có chắc muốn xóa giỏ hàng không?")) {
+        cart.length = 0; // Làm rỗng mảng
+        localStorage.setItem("cart", JSON.stringify(cart)); // Lưu vào máy
+        renderCart(); // Vẽ lại giao diện
+        alert("Đã xóa tất cả");
+    }
+}
 function renderCart() {
     cartBody.innerHTML = "";
     let total = 0;
