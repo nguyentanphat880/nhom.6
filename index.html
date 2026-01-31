@@ -6,6 +6,25 @@
     <title>Tiệm Hải sản Ba cô gái</title>
      <link rel="stylesheet" href="styles.css">
 </head>
+<button id="backToTop" title="Lên đầu trang">⬆</button>
+<script>
+const backToTopBtn = document.getElementById("backToTop");
+
+window.addEventListener("scroll", () => {
+    if (window.scrollY > 300) {
+        backToTopBtn.style.display = "block";
+    } else {
+        backToTopBtn.style.display = "none";
+    }
+});
+
+backToTopBtn.addEventListener("click", () => {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+});
+</script>
 <body>
 <div id="wrapper"> 
     <div id="header"> 
@@ -14,24 +33,42 @@
         </a>
 <div id="menu">
     <div class="item">
-        <a href="index.html">Trang Chủ </a>
+        <a href="index.html">Trang Chủ</a>
     </div>
     <div class="item">
-        <a href="#products">Sản phẩm </a>
+        <a href="#products">Sản phẩm</a>
     </div>
-  </div>
+    <div class="item">
+        <a href="#contact">Liên hệ</a>
+    </div>
+    <div class="item">
+    <a href="#about">Giới thiệu</a>
+</div>
+</div>
 
-  <!-- nhập tài khoản -->
-    <div id="actions">
+<div class="item auth-area">
 
-        <div class="item">
-      <a href="login.html">  <img src="./ảnh/icon1.png" alt="" width="25PX" height="25PX"> </a>
-        </div>
+    <!-- CHƯA LOGIN -->
+    <a href="login.html" id="loginBtn" class="account-btn">
+        <i class="fas fa-user-circle"></i>
+        <span>Đăng nhập</span>
+    </a>
+
+    <!-- ĐÃ LOGIN -->
+    <div id="userBox" class="user-box" style="display:none;">
+        <img id="userAvatar">
+        <span id="userName"></span>
+        <button id="logoutBtn">Đăng xuất</button>
+    </div>
+
+</div>
+
+</div>
 <!-- nhấp để mua đồ  -->
        
         <div class="item">
            
-            <a href="sop.html">  <img src="./ảnh/icon2.png" alt="" width="25PX" height="25PX"> </a>
+            <a href="sop.html" class="giohang">  <img src="./ảnh/icon2.png" alt="" width="25PX" height="25PX"> </a>
         </div>  
     </div>
 </div>
@@ -43,7 +80,7 @@
             <span>HẢI SẢN TƯƠI SỐNG MỖI NGÀY</span>
         </h2>
         <p class="haisan" style="color: red;">Đánh bắt trong ngày - tươi ngon - giao nhanh tận nơi<p>
-        <button>Đặt Mua ngay</button>
+  
     </div>
     <div class="box-right">
          <!-- <img src="./ảnh/h9.jpg" alt="">
@@ -123,41 +160,33 @@
         <!-- Pagination sẽ được thêm bằng JavaScript -->
     </div>
 </section>
-
-
-
-
-
 <br><br><br><br>
-
 </div>
-
-
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <!-- CÁC THÀNH VIÊN TRONG NHÓM -->
-<div id="comment">
-    <h2>CÁC THÀNH VIÊN TRONG NHÓM</h2>
+<div id="comment" >
+    <h2 id="about">CÁC THÀNH VIÊN TRONG NHÓM</h2>
 
     <div id="comment-body">
         <div class="member">
             <img src="./ảnh/tanphat.jpg" alt="Nguyễn Tấn Phát">
             <h3>Nguyễn Tấn Phát</h3>
-            <p>Thành viên<br>Nhóm 7</p>
+            <p>Thành viên<br>Nhóm 6</p>
         </div>
 
         <div class="member">
             <img src="./ảnh/z7455019618378_7873090391e397f3f97de6acdb451803.jpg" alt="Âu Nguyên Khang">
             <h3>Âu Nguyên Khang</h3>
-            <p>Trưởng nhóm<br>Nhóm 7</p>
+            <p>Trưởng nhóm<br>Nhóm 6</p>
         </div>
 
         <div class="member">
             <img src="./ảnh/nguyenhuuduc.jpg" alt="Nguyễn Hữu Đức">
             <h3>Nguyễn Hữu Đức</h3>
-            <p>Thành viên<br>Nhóm 7</p>
+            <p>Thành viên<br>Nhóm 6</p>
         </div>
     </div>
 </div>
@@ -172,6 +201,7 @@
         <p>📧 Email:truongtccnbd@gmail.com</p>
         <p>☎ Hotline: 987-654-321 </p>
         <p>📍 Địa chỉ: 79 DT 743, KCN Sóng Thần, phường Bình Hoà, Thuận An, Bình Dương</p>
+        
     </div>
     <div class="box">
         <ul class="quick-menu">
@@ -181,11 +211,25 @@
             <div class="item">
                <a href="#products">Sản phẩm</a>
             </div>
+                 <div class="menu-right">
+        <a href="https://bdi.edu.vn/" target="_blank">🌐Website</a>
+        <a href="https://www.facebook.com/bdi.edu.vn" target="_blank">👍Facebook</a>
+    </div>
+   <div class="item map-box">
+    <a href="https://maps.google.com/?q=Dia+Chi+Cua+Ban"
+       target="_blank"
+       class="map-frame">
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d62685.30132598959!2d106.74007799718852!3d10.900419871092451!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3174d83c1116183d%3A0xfa754495eeb43247!2zVHLGsOG7nW5nIFRydW5nIEPhuqVwIEPDtG5nIE5naGnhu4dwIELDrG5oIETGsMahbmc!5e0!3m2!1svi!2s!4v1767879214967!5m2!1svi!2s..."
+            loading="lazy">
+        </iframe>
+    </a>
+</div>
         </ul>
     </div>
      <div class="box">
         <h3>Liên hệ</h3>
-        <form action="">
+        <form action="" id="contact">
             <input type="text" placeholder="Địa chỉ email">
             <button>nhận tin</button>
         </form>
@@ -203,7 +247,7 @@
             <div class="member-modal-left">
                 <img id="modal-member-avatar" src="./ảnh/z7455019618378_7873090391e397f3f97de6acdb451803.jpg" alt="Avatar" class="member-modal-avatar">
                 <div class="member-modal-role" id="modal-member-role">Nhóm trưởng</div>
-                <div class="member-modal-team" id="modal-member-team">Nhóm 7</div>
+                <div class="member-modal-team" id="modal-member-team">Nhóm 6</div>
             </div>
             <div class="member-modal-right">
                 <h3>Thông tin chi tiết</h3>
@@ -233,7 +277,7 @@
         'Nguyễn Tấn Phát': {
             avatar: './ảnh/tanphat.jpg',
             role: 'Thành viên',
-            team: 'Nhóm 7',
+            team: 'Nhóm 6',
             info: [
                 { icon: 'fas fa-graduation-cap', label: 'Học vấn', value: 'Sinh viên CNTT' },
                 { icon: 'fas fa-birthday-cake', label: 'Ngày sinh', value: '2/6/2009' },
@@ -248,7 +292,7 @@
         'Âu Nguyên Khang': {
             avatar: './ảnh/z7455019618378_7873090391e397f3f97de6acdb451803.jpg',
             role: 'Trường nhóm',
-            team: 'Nhóm 7',
+            team: 'Nhóm 6',
             info: [
                 { icon: 'fas fa-graduation-cap', label: 'Học vấn', value: 'Sinh viên CNTT' },
                 { icon: 'fas fa-birthday-cake', label: 'Ngày sinh', value: '7/3/2009' },
@@ -263,7 +307,7 @@
         'Nguyễn Hữu Đức': {
             avatar: './ảnh/nguyenhuuduc.jpg',
             role: 'Thành viên',
-            team: 'Nhóm 7',
+            team: 'Nhóm 6',
             info: [
                 { icon: 'fas fa-graduation-cap', label: 'Học vấn', value: 'Sinh viên CNTT' },
                 { icon: 'fas fa-birthday-cake', label: 'Ngày sinh', value: '10/10/2009' },
@@ -453,11 +497,13 @@ function setActiveCategory(button) {
 
     button.classList.add("active");
 
+
     // Trigger animation
     void button.offsetWidth; // reset animation
     button.classList.add("bounce");
 }
 </script>
+<script src="main.js"></script>
 <script src="cart.js"></script>
 <script src="cart-fixed.js"></script>
 <script src="nav-menu.js"></script>
