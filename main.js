@@ -508,3 +508,25 @@ if (hienthidsdv4) {
         hienthidsdv4.appendChild(card);
     });
 }
+document.addEventListener("DOMContentLoaded", function () {
+    const isLogin = localStorage.getItem("isLogin") === "true";
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    const loginBtn = document.getElementById("loginBtn");
+    const userBox = document.getElementById("userBox");
+    const userName = document.getElementById("userName");
+    const userAvatar = document.getElementById("userAvatar");
+    const logoutBtn = document.getElementById("logoutBtn");
+
+    if (isLogin && user) {
+        loginBtn.style.display = "none";
+        userBox.style.display = "flex";
+        userName.textContent = user.name;
+        userAvatar.src = user.avatar;
+    }
+
+    logoutBtn?.addEventListener("click", () => {
+        localStorage.clear();
+        window.location.reload();
+    });
+});
