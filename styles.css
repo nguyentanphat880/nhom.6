@@ -4,6 +4,7 @@
     margin: 0;
     box-sizing: border-box;
     font-family: 'Poppins' , sans-serif;
+  
 }
 
 #wrapper {
@@ -57,6 +58,7 @@
     display: flex;
     padding: 0px 133px;
     position: relative;
+    margin-top: -475px;
 
    
 }
@@ -161,6 +163,7 @@
     font-size: 32px;
     margin-bottom: 40px;
     color: #1a4fa3;
+   
 }
 
 /* container chứa các thành viên */
@@ -169,7 +172,7 @@
     justify-content: center;
     gap: 30px;
     flex-wrap: wrap;
-    margin-top: 40px;
+    
 }
 
 /* từng thành viên */
@@ -181,6 +184,7 @@
     text-align: center;
     color: white;
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  
 }
 
 /* ảnh thành viên */
@@ -190,6 +194,8 @@
     object-fit: cover;
     border-radius: 15px;
     margin-bottom: 15px;
+    
+   
 }
 
 /* tên */
@@ -723,6 +729,7 @@ body {
     padding: 15px 40px;
     background: #f4f6f8;
     border-bottom: 2px solid #e0e0e0;
+    margin-top: -1px;
 }
 
 /* ===== LOGO ===== */
@@ -1527,4 +1534,159 @@ body {
 .product-list,
 .main-content {
     overflow: visible;
+}
+.account-btn  {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 600;
+    color: #555;
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 20px;
+    transition: all 0.25s ease;
+        margin-right: 200px;
+   
+}
+
+.account-btn i {
+    font-size: 22px;
+}
+
+.account-btn:hover {
+    background-color: #f1f1f1;
+    color: #000;
+}
+.user-box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #f8f8f8;
+    padding: 5px 10px;
+    border-radius: 25px;
+}
+
+.user-box img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.user-box span {
+    font-weight: 600;
+    font-size: 14px;
+    color: #333;
+}
+#logoutBtn {
+    border: none;
+    background: #ff4d4f;
+    color: #fff;
+    padding: 4px 10px;
+    border-radius: 15px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+#logoutBtn:hover {
+    background: #d9363e;
+}
+
+
+header,
+.header-right { 
+    display: flex; 
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 12px;
+}
+
+.auth-area,
+.cart-icon {
+    min-width: 36px;
+    flex-shrink: 0;
+}
+
+.item {
+    width: auto;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+.menu {
+    display: flex;
+    align-items: center;
+}
+
+.menu-left {
+    display: flex;
+    gap: 20px;
+}
+
+.menu-right {
+    display: flex;
+    gap: 15px;
+    margin-left: auto;   /* 🔥 ĐẨY SANG PHẢI */
+}
+/* RESET GIÃN KHOẢNG CÁCH DO LOGIN */
+section {
+    margin-top: 0;
+}
+
+/* CHỈ GIÃN LOGIN */
+.login-container {
+    margin-top: 40px;
+}
+
+/* BANNER */
+.banner {
+    margin-top: 20px;
+}
+
+/* SẢN PHẨM & THÀNH VIÊN */
+.section-products,
+.section-team {
+    margin-top: 40px;
+}
+.giohang{
+    margin-top: -130px;
+    margin-left: 1100px;
+}
+.map-frame {
+    display: block;
+    padding: 6px;
+    background: #ffffff;              /* nền khung */
+    border: 2px solid #ffffff;        /* viền trắng nổi trên header xanh */
+    border-radius: 16px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+    transition: 0.3s ease;
+}
+
+.map-frame iframe {
+    width: 220px;                    /* giữ map to */
+    height: 140px;
+    border: none;
+    border-radius: 12px;
+    display: block;
+}
+#backToTop {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 45px;
+    height: 45px;
+    border: none;
+    border-radius: 50%;
+    background: #4a90e2;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    display: none; /* ẩn mặc định */
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    z-index: 999;
+}
+
+#backToTop:hover {
+    background: #357abd;
 }
